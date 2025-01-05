@@ -1,6 +1,9 @@
 // Next.js
 import type { Metadata } from "next";
 
+// Clerk Provider - authentication
+import { ClerkProvider } from "@clerk/nextjs";
+
 // Global css
 import "./globals.css";
 
@@ -37,22 +40,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${barlowFont.variable} antialiased`}
+    <ClerkProvider>
+      <html
+        lang="en"
+        suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${barlowFont.variable} antialiased`}
         >
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
