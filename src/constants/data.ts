@@ -4,36 +4,36 @@ export const adminDashboardSidebarOptions: DashboardSidebarMenuInterface[] = [
   {
     label: "Dashboard",
     icon: "dashboard",
-    link: "",
+    link: "/dashboard/admin",
   },
   {
-    label: "Products",
-    icon: "products",
-    link: "products",
+    label: "Stores",
+    icon: "store",
+    link: "/dashboard/admin/stores",
   },
   {
     label: "Orders",
     icon: "box-list",
-    link: "orders",
+    link: "/dashboard/admin/orders",
   },
   {
-    label: "Inventory",
-    icon: "inventory",
-    link: "inventory",
+    label: "Categories",
+    icon: "categories",
+    link: "/dashboard/admin/categories",
+  },
+  {
+    label: "Sub-Categories",
+    icon: "categories",
+    link: "/dashboard/admin/subCategories",
+  },
+  {
+    label: "Offer Tags",
+    icon: "offer",
+    link: "/dashboard/admin/offer-tags",
   },
   {
     label: "Coupons",
     icon: "coupon",
-    link: "coupons",
-  },
-  {
-    label: "Shipping",
-    icon: "shipping",
-    link: "shipping",
-  },
-  {
-    label: "Settings",
-    icon: "settings",
-    link: "settings",
+    link: "/dashboard/admin/coupons",
   },
 ];
