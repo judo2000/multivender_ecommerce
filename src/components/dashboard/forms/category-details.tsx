@@ -32,12 +32,17 @@ import {
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+import ImageUpload from "../shared/image-upload";
 
 interface CategoryDetailsProps {
   data?: Category;
+  cloudinary_key: string;
 }
 
-const CategoryDetails: FC<CategoryDetailsProps> = ({ data }) => {
+const CategoryDetails: FC<CategoryDetailsProps> = ({
+  data,
+  cloudinary_key,
+}) => {
   // Form hock for managing form state and validation
   const form = useForm<z.infer<typeof CategoryFormSchema>>({
     mode: "onChange", // form validation mode
@@ -87,6 +92,32 @@ const CategoryDetails: FC<CategoryDetailsProps> = ({ data }) => {
               onSubmit={form.handleSubmit(handleSubmit)}
               className="space-y-4"
             >
+              <FormField
+                control={form.control}
+                name="image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <ImageUpload
+                        cloudinary_key={cloudinary_key}
+                        type="profile"
+                        value={field.value.map((image) => image.url)}
+                        disabled={isLoading}
+                        onChange={(url) => field.onChange([{ url }])}
+                        onRemove={(url) =>
+                          field.onChange([
+                            ...field.value.filter(
+                              (current) => current.url !== url
+                            ),
+                          ])
+                        }
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 disabled={isLoading}
                 control={form.control}
